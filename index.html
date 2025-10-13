@@ -12,7 +12,7 @@
      crossorigin=""></script>
     <style>
         #map{
-          height: 580px;
+          height: 600px;
         }
     </style>
 </head>
@@ -21,7 +21,7 @@
     
   <script>
     //Creating map instance 
-    var map=L.map('map').setView([51.505, -0.09], 13);
+    var map=L.map('map').setView([51.505, -0.09], 7);
 
     // Add OpenStreetMap Tile Layer
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -44,7 +44,7 @@ if(marker){
   map.removeLayer(circle);
 }
 
-  marker= L.marker([lat, lng]).addTo(map);
+  marker= L.marker([lat, lng]).bindPopup(('<h2>title</h2>')).addTo(map);
   circle= L.circle([lat,lng],{radius:accuracy}).addTo(map);
 
 if(!zoomed){
