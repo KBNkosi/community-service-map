@@ -1,67 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Community Map</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
-     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
-    <style>
-        #map{
-          height: 600px;
-        }
-    </style>
-</head>
-<body>
-  <div id='map'></div>
-    
-  <script>
-    //Creating map instance 
-    var map=L.map('map').setView([51.505, -0.09], 7);
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-    // Add OpenStreetMap Tile Layer
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!--Header-->
+    <header class="app-header">
+      <div class="container">
+        <h1>Community Services Map</h1>
+       
+        <p class="subtitle">
+          Find clinics, libraries and support services across Gauteng
+        </p>
+      </div>
+    </header>
+    <!--Main-->
+    <main class="app-main container">
+      <!--sidebar-->
+      <aside class="sidebar" aria-label="Search and filters">
+        <form action="" class="search-form" id="searchForm">
+          <label for="searchInput" class="visually-hidden"
+            >Search address or suburb</label
+          >
+          <input
+            type="search"
+            name="searchInput"
+            id="searchInput"
+            placeholder="Enter address or suburb"
+          />
+          <button type="submit" aria-label="Search">search</button>
+        </form>
+        <button id="useLocation" class="btn-full" aria-label="Use my location">
+          Use Location
+        </button>
 
+        <section class="filters" aria-labelledby="filtersTitle">
+          <h2 id="filtersTitle">Services</h2>
+          <div class="filter-item">
+            <input
+              type="checkbox"
+              name="category"
+              id="f-clinics"
+              value="clinics"
+            />
+            <label for="f-clinics">Clinics</label>
+          </div>
+          <div class="filter-item">
+            <input
+              type="checkbox"
+              name="category"
+              id="f-libraries"
+              value="libraries"
+            />
+            <label for="f-libraries">Libraries</label>
+          </div>
+          <div class="filter-item">
+            <input
+              type="checkbox"
+              name="category"
+              id="f-food"
+              value="foodbanks"
+            />
+            <label for="f-food">Food Banks</label>
+          </div>
+        </section>
+        <section class="results" id="results">
+          <!--result cards go here-->
+        </section>
+      </aside>
 
+      <!--Map-->
+      <section
+        class="map-section"
+        id="mapSection"
+        role="application"
+        aria-label="MapSection"
+      >
+        <div id="map" class="map"></div>
+        <div class="floating-controls" aria-hidden="true">
+          <!--Legend, layer toggles, etc-->
+        </div>
+      </section>
+    </main>
 
-//Dynamically get user location using HTML5 geolocation
-navigator.geolocation.watchPosition(success, error);
-
-let marker, circle,zoomed;
-function success(pos){
-  const lat=pos.coords.latitude;
-  const lng=pos.coords.longitude;
-  const accuracy=pos.coords.accuracy;
-if(marker){
-  map.removeLayer(marker);
-  map.removeLayer(circle);
-}
-
-  marker= L.marker([lat, lng]).bindPopup(('<h2>title</h2>')).addTo(map);
-  circle= L.circle([lat,lng],{radius:accuracy}).addTo(map);
-
-if(!zoomed){
-  zoomed=map.fitBounds(circle.getBounds());
-}
-
-map.setView(lat,lng)
-}
- 
-
-function error(err){
-  if(err.code==1){
-    alert("Allow location access");
-  }else{
-    alert("error accessing location");
-  }
-}
-  </script>
-</body>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>

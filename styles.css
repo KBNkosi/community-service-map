@@ -1,0 +1,152 @@
+:root {
+  /* 🎨 Colors */
+  --primary-clr: #7B61FF;
+  --secondary-clr: #9D8CFF;
+  --map-clr: #B388FF;
+  --primary-txt: #FFFFFF;
+  --muted-txt: #B3B3B3;
+  --surface: #1A1A1A;
+  --background: #0D0D0D;
+  --success: #4CAF50;
+  --info: #00BCD4;
+  --error: #E53935;
+
+  /*  Gradients */
+  --primary-gradient: linear-gradient(135deg, #7B61FF, #9D8CFF);
+
+  /* Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  /*  Typography */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', 'Roboto', sans-serif;
+
+  /*  Radius & Shadows */
+  --radius: 16px;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+
+  /*  Transition */
+  --transition: all 0.2s ease-in-out;
+}
+
+/* -------------------- Base -------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--primary-txt);
+  background-color: var(--background);
+  line-height: 1.6;
+}
+
+/* -------------------- Typography -------------------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--primary-txt);
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+p {
+  font-size: 1rem;
+  color: var(--muted-txt);
+}
+
+/* -------------------- Layout Utilities -------------------- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-5);
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+/* -------------------- Components -------------------- */
+
+/* Buttons */
+.btn {
+  border: none;
+  border-radius: var(--radius);
+  padding: var(--space-3) var(--space-5);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background: var(--primary-clr);
+  color: var(--primary-txt);
+}
+
+.btn-primary:hover {
+  background: var(--secondary-clr);
+  transform: scale(1.03);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--secondary-clr);
+  color: var(--secondary-clr);
+}
+
+.btn-outline:hover {
+  background: var(--secondary-clr);
+  color: var(--background);
+}
+
+/* Cards */
+.card {
+  background-color: var(--surface);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Map Pins or Tag Elements */
+.tag {
+  background-color: var(--map-clr);
+  color: var(--background);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.875rem;
+}
+
+/* -------------------- Responsiveness -------------------- */
+@media (max-width: 768px) {
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.25rem; }
+  .container { padding: var(--space-3); }
+}
