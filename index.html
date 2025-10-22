@@ -30,42 +30,48 @@
     <!--Header-->
     <header class="app-header">
       <div class="container">
-        <h1>Community Services Map</h1>
-       
-        <p class="subtitle">
-          Find clinics, libraries and support services across Gauteng
-        </p>
+        <div class="icons">
+         
+          <i class="fa-regular fa-bell"></i>
+           <i class="fa-regular fa-user"></i>
+        </div>
       </div>
     </header>
     <!--Main-->
     <main class="app-main container">
       <!--sidebar-->
       <aside class="sidebar" aria-label="Search and filters">
-        <form action="" class="search-form" id="searchForm">
-          <label for="searchInput" class="visually-hidden"
-            >Search address or suburb</label
-          >
+        
+        <div class="search-container">
+          <h2 id="searchTitle">Search address or suburb</h2>
+          <form action="" class="search-form" id="searchForm">
+           <button type="submit" id="searchBtn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
           <input
             type="search"
             name="searchInput"
             id="searchInput"
             placeholder="Enter address or suburb"
           />
-          <button type="submit" aria-label="Search">search</button>
+         
         </form>
-        <button id="useLocation" class="btn-full" aria-label="Use my location">
+        <button id="useLocation" class="btn" aria-label="Use my location">
+          <i class="fa-solid fa-location-crosshairs"></i>
           Use Location
         </button>
 
+        </div>
+        
         <section class="filters" aria-labelledby="filtersTitle">
           <h2 id="filtersTitle">Services</h2>
           <div class="filter-item">
+            
             <input
               type="checkbox"
               name="category"
               id="f-clinics"
               value="clinics"
             />
+            <i class="fa-solid fa-house-chimney-medical"></i>
             <label for="f-clinics">Clinics</label>
           </div>
           <div class="filter-item">
@@ -75,6 +81,7 @@
               id="f-libraries"
               value="libraries"
             />
+            <i class="fa-solid fa-book"></i>
             <label for="f-libraries">Libraries</label>
           </div>
           <div class="filter-item">
@@ -84,6 +91,7 @@
               id="f-food"
               value="foodbanks"
             />
+            <i class="fa-solid fa-utensils"></i>
             <label for="f-food">Food Banks</label>
           </div>
         </section>
@@ -105,7 +113,8 @@
         </div>
       </section>
     </main>
-
+    <!--Footer-->
+    <footer class="footer">This is the footer</footer>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="app.js"></script>
   </body>

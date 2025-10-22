@@ -44,15 +44,15 @@
 
 body {
   font-family: var(--font-body);
-  color: var(--primary-txt);
-  background-color: var(--background);
+/*   color: var(--primary-txt); */
+/*   background-color: var(--background); */
   line-height: 1.6;
 }
 
 /* -------------------- Typography -------------------- */
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
-  color: var(--primary-txt);
+/*   color: var(--primary-txt); */
 }
 
 h1 {
@@ -67,7 +67,7 @@ h2 {
 
 p {
   font-size: 1rem;
-  color: var(--muted-txt);
+/*   color: var(--muted-txt); */
 }
 
 /* -------------------- Layout Utilities -------------------- */
@@ -149,4 +149,64 @@ p {
   h1 { font-size: 1.6rem; }
   h2 { font-size: 1.25rem; }
   .container { padding: var(--space-3); }
+}
+
+/*App main styles */
+.app-main{
+  display: flex;
+  gap: 20px;
+}
+
+/*Header styles*/
+.app-header{
+  border:1px solid #ccc;
+}
+
+.icons{
+  display: flex;
+  justify-content:flex-end;
+  gap: 16px;
+}
+
+/*Sidebar styles*/
+.sidebar{
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width:400px;
+  height: 70vh;
+  display: flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding: var(--space-5);
+  
+}
+
+.search-form{
+  border:1px solid #ccc;
+  border-radius:var(--radius);
+  padding: var(--space-1)  var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+#searchInput{
+  border:none;
+}
+
+#searchBtn{
+  border:none;
+}
+
+/*Map styles*/
+.map-section{
+  border: 1px solid black;
+  width: 100%;
+}
+
+.map{
+  height: 100%;
+}
+
+/*Footer*/
+.footer{
+  border: 1px solid black;
 }
