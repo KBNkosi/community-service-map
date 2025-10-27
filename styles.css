@@ -63,6 +63,7 @@ h1 {
 h2 {
   font-size: 1.5rem;
   font-weight: 600;
+  color: var(--primary-txt);
 }
 
 p {
@@ -144,22 +145,27 @@ p {
   font-size: 0.875rem;
 }
 
-/* -------------------- Responsiveness -------------------- */
-@media (max-width: 768px) {
-  h1 { font-size: 1.6rem; }
-  h2 { font-size: 1.25rem; }
-  .container { padding: var(--space-3); }
-}
+
 
 /*App main styles */
 .app-main{
-  display: flex;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: var(--space-5);
+  height: calc(100vh - 80px);
+  transition: grid-template-columns 0.3s ease-in-out;
+  padding:  var(--space-5);
+  
+}
+
+.app.collapsed{
+  grid-template-columns: 80px 1fr;
 }
 
 /*Header styles*/
 .app-header{
   border:1px solid #ccc;
+  height: 80px;
 }
 
 .icons{
@@ -170,43 +176,166 @@ p {
 
 /*Sidebar styles*/
 .sidebar{
-  border: 1px solid #ccc;
-  width: 100%;
-  max-width:400px;
-  height: 70vh;
   display: flex;
   flex-direction:column;
-  justify-content:space-between;
+  gap: var(--space-5);
+  background-color: var(--surface);
+  border-radius:var(--radius);
+  box-shadow: var(--shadow);
   padding: var(--space-5);
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 100%;
+  transition: width 0.3s ease-in-out, padding 0.3s ease-in-out;
   
 }
 
+.app-main.collapsed .sidebar{
+  width: 80px;
+  padding: var(--space-3);
+}
+
+.app-main.collapsed .sidebar h2,
+.app-main.collapsed .sidebar label,
+.app-main.collapsed .sidebar input,
+.app-main.collapsed .sidebar p,
+.app-main.collapsed .sidebar button:not(.toggle-btn){
+  display: none;
+}
+
+.toggle-btn{
+  background: transparent;
+  border: none;
+  color: var(--primary-txt);
+  font-size: 1.3rem;
+  cursor: pointer;
+  align-self:flex-end;
+}
+
+/*search area*/
+.search-container{
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
 .search-form{
-  border:1px solid #ccc;
+  display: flex;
+  align-items: center;
+  background-color:#121212 ;
+  border:1px solid var(--secondary-clr);
   border-radius:var(--radius);
-  padding: var(--space-1)  var(--space-3);
-  margin-bottom: var(--space-2);
+  padding: var(--space-2)  var(--space-3);
+
 }
 
 #searchInput{
-  border:none;
+  display: flex;
+  background: transparent;
+  border: none;
+  color: var(--primary-txt);
+  font-size: 1rem;
+  outline: none;
 }
 
 #searchBtn{
+  background: transparent;
   border:none;
+  color: var(--secondary-clr);
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: var(--transition);
 }
 
+#searchBtn:hover{
+  color: var(--primary-clr);
+}
+
+/*filters*/
+.filters{
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.filter-item{
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: #181818;
+  color: var(--primary-txt);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-item:hover{
+  background: var(--primary-gradient);
+  color: var(--primary-txt);
+}
+
+.filter-item input{
+  accent-color: var(--primary-clr);
+}
 /*Map styles*/
 .map-section{
-  border: 1px solid black;
-  width: 100%;
+  background: var(--background);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  position: relative;
 }
 
 .map{
+width: 100%;
   height: 100%;
+  border-radius: inherit;
+
 }
+
+/* .floating-controls{
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+} */
 
 /*Footer*/
 .footer{
-  border: 1px solid black;
+ height: 80px;
+}
+
+/* -------------------- Responsiveness -------------------- */
+@media (max-width: 768px) {
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.25rem; }
+  .container { padding: var(--space-3); }
+}
+
+@media (max-width: 768px) {
+  .app-main{
+    grid-template-columns: 1fr;
+    position: relative;
+    /* height: auto; */
+  }
+
+  .sidebar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 10;
+    width: 300px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .app-main.collapsed .sidebar{
+    transform: translateX(0);
+  }
+
+  
 }

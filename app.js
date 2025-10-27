@@ -32,7 +32,16 @@ const services = [
 document.addEventListener('DOMContentLoaded', () => {
   const map = L.map('map').setView([-26.2041, 28.0473], 11); // Johannesburg center as default
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(map);
-  
+  const appMain=document.querySelector('.app-main');
+  const toggleBtn=document.getElementById('toggleSidebar');
+
+  // Toggle sidebar
+  toggleBtn.addEventListener('click', ()=>{
+    appMain.classList.toggle('collapsed');
+    setTimeout(()=>{
+      map.invalidateSize();
+    }, 310);
+  })
   //Get custom icons
   const getIcon=(category)=>{
     const iconSize=[25,41];

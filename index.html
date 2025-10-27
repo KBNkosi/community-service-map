@@ -37,11 +37,14 @@
         </div>
       </div>
     </header>
-    <!--Main-->
-    <main class="app-main container">
+    <!--app container-->
+    <main class="app-main">
       <!--sidebar-->
       <aside class="sidebar" aria-label="Search and filters">
-        
+        <button id="toggleSidebar" class="toggle-btn" aria-label="Toggle sidebar">
+         <i class="fa-solid fa-bars"></i>
+        </button>
+        <!--search-->
         <div class="search-container">
           <h2 id="searchTitle">Search address or suburb</h2>
           <form action="" class="search-form" id="searchForm">
@@ -60,7 +63,7 @@
         </button>
 
         </div>
-        
+        <!--filters-->
         <section class="filters" aria-labelledby="filtersTitle">
           <h2 id="filtersTitle">Services</h2>
           <div class="filter-item">
